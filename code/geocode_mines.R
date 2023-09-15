@@ -7,17 +7,16 @@ library(tidyr)
 #Now you can give city name or country name individually
 register_google(key = "AIzaSyBQLZ-BWrndxJw4bj0rGFrPdAVlEl9DKko", write = TRUE)
 
-setwd("/Volumes/GoogleDrive/My Drive/_Berkeley Research/Econ History/Resource Curse/Data")
+setwd("/Users/jonathanold/Library/CloudStorage/GoogleDrive-jonathan_old@berkeley.edu/My Drive/_Berkeley Research/Econ History/Resource Curse/Data/")
 
 data_1910 = read_excel("./Coal by Mine/1910.xlsx")
 
-data_1910_lon_manual = data_1910$Geocode
-data_1910$lat_manual = unlist(strsplit(data_1910$Geocode,","))
+
+# data_1910 <- subset (data_1910, select = -(Geocode))
 
 data_1910 = separate(data_1910, 'Geocode', paste("Geocode", 1:2, sep=","), sep=",", extra="drop")
 data_1910$lat_manual = data_1910$"Geocode,1"
 data_1910$long_manual = data_1910$"Geocode,2"
-data_1910 <- subset (data_1910, select = -(Geocode))
 drops <- c("Geocode,1","Geocode,2")
 data_1910 = data_1910[ , !(names(data_1910) %in% drops)]
 
