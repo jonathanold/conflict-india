@@ -5,7 +5,7 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import stopwords
 from nltk import RegexpParser
 
-file_path = r'C:\Users\Jade Chen\URAP_India\conflict-india\data\acled_india_30may.csv'
+file_path = r'C:\Users\Jade Chen\URAP_India\conflict-india\data\acled_india_csv.csv'
 acled_df = pd.read_csv(file_path, delimiter=';')
 
 # Display the first five rows and data types of each column
@@ -58,7 +58,6 @@ def prep_text(text):
     # If text is NaN, return an empty string
     else:
         return ''
-
 
 # Apply the prep_text function to the 'notes' column and store in new 'cleaned_notes' column
 acled_df['cleaned_notes'] = acled_df['notes'].apply(prep_text)
