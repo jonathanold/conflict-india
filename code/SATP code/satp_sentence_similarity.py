@@ -5,10 +5,8 @@ import re
 
 class EventCategorizer:
     def __init__(self):
-        # Load pre-trained BERT model
+        # Load pre-trained BERT model and spaCy model
         self.model = SentenceTransformer('bert-base-nli-mean-tokens')
-
-        # Load spaCy model
         self.nlp = spacy.load("en_core_web_sm")
 
         # Define categories and template sentences
@@ -119,8 +117,22 @@ categorizer = EventCategorizer()
 file_path = r'C:\Users\Jade Chen\Downloads\dataset_satp_clean_for_similarity.csv'
 satp = pd.read_csv(file_path)
 
+# Apply categorizer to first 30 subsets so my laptop does not die
 satp_subset = satp.head(30)
 satp_subset['category'] = satp_subset['descr_short'].apply(categorizer.categorize_event)
 
 # Display categorized events
 print(satp_subset[['descr_short', 'category']])
+
+# How many occurrences are there for each category?
+category_counts = satp_subset['category'].value_counts()
+
+# What is the total number of events?
+total_events = len(satp_subset)
+
+# What is the ratio of events in each category?
+category_ratios = {category: count / total_events for category, count in category_counts.items()}
+
+# Display ratio of events in each category
+for category, ratio in category_ratios.items():
+    print(f"Category {category}: {ratio:.2f}")
