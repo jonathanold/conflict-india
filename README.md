@@ -1,7 +1,7 @@
 # The effect of political reservations on conflict in India
 
 This repository contains the code, data, and analysis for studying patterns of conflict in India. The project how political reseravtions affect conflict in India. By leveraging cutting-edge methods in econometrics, machine learning, geospatial analysis, and natural language processing (NLP), this work aims to provide actionable insights for policymakers and researchers.
-
+The full research paper is in `JOld_Reservations-and-Conflict.pdf`.
 Data cleaning is done in Stata, and the analysis is done in R and Stata. Parts of the code for geocoding and natural language processing are done in Python (using BERT and tensorflow). 
 
 ---
