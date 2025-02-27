@@ -1,0 +1,16 @@
+#data
+allCountries.zip
+allCountries.txt
+admin1CodesASCII.txt
+admin2Codes.txt
+
+#geonames_index
+geoname_index/
+
+.idea
+.pyc
+*.DS_Store
+environment_variables.sh
+
+# premium data
+airports.txt
